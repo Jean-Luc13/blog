@@ -1,0 +1,86 @@
+  .item1 {
+    width: 100%;
+    text-align: right;
+    // padding: 10px;
+    // border: 5px;
+
+  }
+  .item1 a {
+    padding: 10px;
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+
+  }
+  .item1 h2 {
+    text-align: left;
+  }
+
+
+
+#user_form {
+  color: white;
+  background-color: none;
+  width: 100%;
+}
+
+#user_form input[type=text], input[type=password], select, textarea{
+    width: auto;
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    box-sizing: border-box;
+    resize: vertical;
+    display: inline-block;
+    float: right;
+  }
+
+
+body {
+  background-image: url("Joker1.jpg");
+  font-family: sans-serif;
+  color: white;
+}
+
+  .tx {
+    width: 100%;
+    min-height: 150px;
+    max-height: auto;
+      }
+
+  .comSubmit {
+
+
+  }
+
+  .blog_data {
+    text-align: center;
+  }
+
+  .item1 {
+    grid-area: header;
+    width: 100%;
+  }
+  .item2 { grid-area: left; }
+  .item3 { grid-area: main;
+    max-width: 933px;
+   }
+  .item4 input[type=text], input[name=pword], textarea {
+    grid-area: right;
+    float: left;
+    display: inline-block;
+    width: 100%;
+
+   }
+  .item5 { grid-area: footer; }
+
+  .grid-container {
+    display: grid;
+    grid-template-rows: 100px 1fr 100px;
+    grid-template-columns: 200px 1fr 200px;
+    // grid-gap: 2vw;
+    grid-template-areas:
+      'header header header'
+      'left main right'
+      'footer footer footer';
+    }

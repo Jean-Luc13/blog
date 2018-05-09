@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Create Blog</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-lite.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-lite.js"></script>
+  <link rel="stylesheet" href="output.css">
+
+</head>
+<body id="createBlog">
+  <div class="grid-container">
+    <div class="item1">
+        <a href="index.html" target="_self">Archive</a>
+        <a href="create_blog.html" target="_self">Create Blog</a>
+        <!-- <a href="edit_blog.html" target="_self">Edit Blog</a> -->
+        <a href="register.html" target="_self">Sign Up</a>
+        <h2><a href="index.html">Let's have a blog</a></h2>
+        <hr>
+    </div>
+
+    <div class="item2">
+
+    </div>
+    <div class="item3">
+      <form id="userBlog" action="http://localhost:3000/blogs" method="post">
+        Title:<input type="text" name="title" value=""
+        placeholder="Title" required>
+        <p></p>
+        Author:<input type="text" name="author" value="" placeholder="Name" required>
+        <p></p>
+        Date:<input type="text" name="date" value="" placeholder="yyyy/mm/dd" required>
+        <p></p>
+        <textarea id="summernote" name="editordata" required></textarea>
+        <input id='submit_blog' type="submit" name="" value="Submit">
+      </form>
+
+    </div>
+    <div class="item4">
+
+    </div>
+    <div class="item5">
+
+    </div>
+
+  </div>
+    <script>
+      $(document).ready(function() {
+        $('#summernote').summernote({
+          height: 150,
+          minHeight: 150,
+          maxHeight: null,
+          focus: true
+        });
+
+        $('#userBlog').submit(function(event){
+          event.preventDefault();
+          alert('works');
+
+
+          let title = $('input[name="title"]').val();
+          let author = $('input[name="author"]').val();
+          let date = $('input[name="date"]').val();
+          let article = $('textarea[name="editordata"]').val();
+          let image = $('input[name="image"]').val();
+
+          $.ajax({
+            url: "http://localhost:3000/blogs",
+            type: "POST",
+            data: {
+              blog_title: title,
+              blog_author: author,
+              blog_date: date,
+              blog_article: article
+            },
+
+          }).done(function(saved_blog){
+            alert("Successfully submitted blog on " + saved_blog.blog_date + ", many thanks " + saved_blog.blog_author);
+
+          });
+
+
+
+        });
+
+
+      });
+    </script>
+</body>
+</html>

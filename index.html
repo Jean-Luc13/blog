@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Archive</title>
+  <link rel="stylesheet" href="output.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" charset="utf-8"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+
+      $.getJSON('http://localhost:3000/blogs', function(blogs){
+
+
+        for (blog of blogs) {
+
+          let titles = blog.blog_title;
+          let authors = blog.blog_author;
+          let dates = blog.blog_date;
+          let articles = blog.blog_article;
+          let comments = blog.blog_comments;
+          let id = blog.id;
+
+          $('.blog_data').append('<h2><a class="" href="blogdatabase.html?id='+ id + '">' + titles + '</a></h2>');
+          $('.blog_data').append('<h3>' + authors + "</h3>");
+          $('.blog_data').append('<h4>' + dates + "</h4>");
+          $('.blog_data').append('<p>' + articles + "</p>");
+
+
+        }
+        // console.log(blogs);
+      })
+
+          });
+  </script>
+</head>
+
+<body id="archive">
+  <div class="grid-container">
+    <div class="item1">
+        <a href="index.html" target="_self">Archive</a>
+        <a href="create_blog.html" target="_self">Create Blog</a>
+        <!-- <a href="edit_blog.html" target="_self">Edit Blog</a> -->
+        <a href="register.html" target="_self">Sign Up</a>
+        <h2><a href="index.html">Let's have a blog</a></h2>
+        <hr>
+    </div>
+
+    <div class="item2">
+
+    </div>
+    <div class="item3">
+      <div class="blog_data">
+
+      </div>
+    </div>
+    <div class="item4">
+      Sign In <input type="text" name="signIn" value="">
+      <p></p>
+      Password <input type="password" name="pword" value="">
+      <hr> <input id='user_sign' type="submit" name="" value="Submit">
+    </div>
+    <div class="item5">
+    </div>
+
+  </div>
+
+  </body>
+</html>

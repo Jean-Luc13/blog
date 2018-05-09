@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Blog Database</title>
+    <link rel="stylesheet" href="output.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" charset="utf-8"></script>
+
+  </head>
+  <body id="dBase">
+    <div class="grid-container">
+      <div class="item1">
+          <a href="index.html" target="_self">Archive</a>
+          <a href="create_blog.html" target="_self">Create Blog</a>
+          <!-- <a href="edit_blog.html" target="_self">Edit Blog</a> -->
+          <a href="register.html" target="_self">Sign Up</a>
+          <h2><a href="index.html">Let's have a blog</a></h2>
+          <hr>
+      </div>
+
+      <div class="item2">
+
+      </div>
+      <div class="item3">
+        <div class="view_blog">
+
+        </div>
+
+        <form class="comForm" action="http://localhost:3000/comments" method="post">
+          <p></p>
+          <hr>
+          <label>
+            User Name
+
+          </label>
+          <p></p>
+          <input type="text" name="username" value="" placeholder="User Name" required>
+          <p></p>
+          <textarea class="tx" name="comment" required></textarea>
+
+          <input id="comSubmit" type="submit" name="submit" value="submit">
+
+
+
+
+
+
+
+
+        </form>
+        <input id="edit_blog" type="submit" name="edit" value="Edit Post">
+        <hr>
+        <div class="comments">
+
+        </div>
+
+
+      </div>
+      <div class="item4">
+
+      </div>
+      <div class="item5">
+
+      </div>
+
+    </div>
+
+  </body>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $.ajaxSetup({cache: false});
+
+
+
+      var url_string = window.location.href;
+      var url = new URL(url_string);
+      var id = url.searchParams.get("id");
+      var postId = url.searchParams.get("id");
+
+
+    $.getJSON('http://localhost:3000/blogs/' + id, function(data){
+      $('.view_blog').append('<h2>' + data.blog_title + '</h2>')
+      $('.view_blog').append('<h3>' + data.blog_author + '</h3>')
+      $('.view_blog').append('<h4>' + data.blog_date + '</h4>')
+      $('.view_blog').append('<p>' + data.blog_article + '</p>')
+
+    });
+
+    $('.comForm').submit(function(event){
+
+      event.preventDefault();
+
+      let usernames = $('input[name="username"]').val();
+      let comment = $('textarea[name="comment"]').val();
+
+      $.ajax({
+        url: "http://localhost:3000/comments",
+        type: "POST",
+        data: {
+          username: usernames,
+          comments: comment,
+          postId: id
+        },
+
+      }).done(function(saved_comment){
+        alert("Comment submitted. Thank you " + usernames);
+      })
+
+    });
+
+    $.getJSON('http://localhost:3000/comments/?postId=' + postId, function(comments){
+
+      for (comment of comments) {
+
+        $('.comments').append("<h3>" + comment.username + "</h3>");
+        $('.comments').append("<p>" + comment.comments + "</p><hr>");
+
+
+      }
+    });
+    $('#edit_blog').on('click',function(){
+     location.href="edit_blog.html?id="+id;
+   });
+
+  });
+  </script>
+
+
+</html>

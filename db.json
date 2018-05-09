@@ -1,0 +1,47 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "username": "jhkjh",
+      "comments": "jkuhkhhkjhb",
+      "postId": "1",
+      "id": 1
+    },
+    {
+      "username": "jnkjjkj",
+      "comments": "joijcsnjvmn",
+      "postId": "1",
+      "id": 2
+    }
+  ],
+  "users": [
+    {
+      "firstName": "Alecz",
+      "lastName": "Fernandez",
+      "email": "@mail",
+      "password": "asd",
+      "id": 1
+    }
+  ],
+  "profile": {
+    "name": "Jean-Luc",
+    "surname": "Joubert",
+    "email": "jeanljoubert@gmail.com"
+  },
+  "blogs": [
+    {
+      "blog_title": "Who are you",
+      "blog_author": "JL",
+      "blog_date": "2018/02/21",
+      "blog_article": "<p>What if you were not who you were? and then?</p><p><br></p><p>what???</p><p><br></p><p>haha</p>",
+      "image_url": "",
+      "id": 1
+    }
+  ]
+}

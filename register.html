@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="output.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" charset="utf-8"></script>
+
+  </head>
+  <body id="signUp">
+    <div class="grid-container">
+      <div class="item1">
+          <a href="index.html" target="_self">Archive</a>
+          <a href="create_blog.html" target="_self">Create Blog</a>
+          <!-- <a href="edit_blog.html" target="_self">Edit Blog</a> -->
+          <a href="register.html" target="_self">Sign Up</a>
+          <h2><a href="index.html">Let's have a blog</a></h2>
+          <hr>
+      </div>
+      <div class="item2">
+
+      </div>
+      <div class="item3">
+        <form id='user_form' action="http://localhost:3000/users" method="post">
+          <hr> First Name <input type="text" name="firstName" value="" required>
+          <hr> Last Name <input type="text" name="lastName" value="" required>
+          <hr> Email <input type="text" name="email" value="" required>
+          <hr> Password <input type="password" name="password" value="" required>
+          <hr> <input id='user_btn' type="submit" name="" value="Submit">
+        </form>
+      </div>
+      <div class="item4">
+
+      </div>
+      <div class="item5">
+
+      </div>
+    </div>
+
+
+
+
+
+
+  </body>
+
+  <script type="text/javascript">
+
+    $(document).ready(function() {
+
+        $('#user_form').submit(function(event) {
+
+          event.preventDefault();
+          alert('works');
+
+          let firstName = $('input[name="firstName"]').val();
+          let lastName = $('input[name="lastName"]').val();
+          let email = $('input[name="email"]').val();
+          let password = $('input[name="password"]').val();
+
+        $.ajax({
+            url: "http://localhost:3000/users",
+            type: 'POST',
+            data: {
+              firstName: firstName,
+              lastName: lastName,
+              email: email,
+              password: password
+            },
+
+          }
+        ).done(function(saved_user){
+          $('#user_form').html('new user created' + saved_user.id).show();
+        });
+
+
+
+        });
+
+
+      });
+  </script>
+
+</html>

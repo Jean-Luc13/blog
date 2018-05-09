@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Create Blog</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-lite.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-lite.js"></script>
+  <link rel="stylesheet" href="output.css">
+
+</head>
+
+<body id="createBlog">
+  <div class="grid-container">
+    <div class="item1">
+      <a href="index.html" target="_self">Archive</a>
+      <a href="create_blog.html" target="_self">Create Blog</a>
+      <!-- <a href="edit_blog.html" target="_self">Edit Blog</a> -->
+      <a href="register.html" target="_self">Sign Up</a>
+      <h2><a href="index.html">Let's have a blog</a></h2>
+      <hr>
+    </div>
+
+    <div class="item2">
+
+    </div>
+    <div class="item3">
+      <form id="userBlog" action="http://localhost:3000/blogs" method="post">
+        Title:<input type="text" name="title" value="" placeholder="Title" required>
+        <p></p>
+        Author:<input type="text" name="author" value="" placeholder="Name" required>
+        <p></p>
+        Date:<input type="text" name="date" value="" placeholder="yyyy/mm/dd" required>
+        <p></p>
+        <!-- <textarea id="summernote" name="editordata" required></textarea>
+        <input id='submit_blog' type="submit" name="" value="Submit"> -->
+        <br>
+
+        <label>
+        Insert & edit article :
+        <textarea id="summernote" name="editordata"></textarea>
+        </label>
+        <hr>
+
+        <input type="" name="image" value="" placeholder="insert img url">
+
+        <input type="submit" name="submit" value="SUBMIT">
+
+      </form>
+
+    </div>
+    <div class="item4">
+
+    </div>
+    <div class="item5">
+
+    </div>
+
+  </div>
+  <script>
+    $(document).ready(function() {
+    $('#summernote').summernote({
+      height: 150,
+      minHeight: 150,
+      maxHeight: null,
+      focus: true
+    });
+
+    var url_string = window.location.href;
+    var url = new URL(url_string);
+    var id = url.searchParams.get("id");
+
+
+
+
+    $.getJSON('http://localhost:3000/blogs?id=' + id, function(data) {
+      for (object of data) {
+        $('input[name="title"]').val(object.blog_title)
+        $('input[name="author"]').val(object.blog_author);
+        $('input[name="date"]').val(object.blog_date);
+        $('textarea[name="editordata"]').summernote('code', object.blog_article);
+        $('input[name="image"]').val(object.image_url);
+      }
+    });
+    $('#userBlog').submit(function(event) {
+      event.preventDefault();
+
+      let nTitle = $('input[name="title"]').val();
+      let nAuthor = $('input[name="author"]').val();
+      let nDate = $('input[name="date"]').val();
+      let nArticle = $('textarea[name="editordata"]').val();
+      let nImage = $('input[name="image"]').val();
+      $.ajax({
+        url: "http://localhost:3000/blogs/" + id,
+        type: "PUT",
+        data: {
+          blog_title: nTitle,
+          blog_author: nAuthor,
+          blog_date: nDate,
+          blog_article: nArticle,
+          image_url: nImage
+        },
+      }).done(function(edited_blog) {
+        alert("Blog edited on " + edited_blog.blog_date + ", thank you " + edited_blog.blog_author);
+      })
+
+    })
+    });
+  </script>
+</body>
+
+</html>
