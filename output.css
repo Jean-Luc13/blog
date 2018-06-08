@@ -73,7 +73,8 @@
 
   .grid-container {
     display: grid;
-    grid-template-columns: 1fr; }
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr; }
     .grid-container .item1 a {
       display: block;
       text-align: center;
