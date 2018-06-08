@@ -1,3 +1,7 @@
+  @media(min-width: 700px) {
+
+
+  
   .item1 {
     width: 100%;
     text-align: right;
@@ -48,10 +52,6 @@ body {
     max-height: auto;
       }
 
-  .comSubmit {
-
-
-  }
 
   .blog_data {
     text-align: center;
@@ -84,3 +84,53 @@ body {
       'left main right'
       'footer footer footer';
     }
+  }
+    @media(max-width: 700px) {
+      body {
+        background-image: url("Joker1.jpg");
+        font-family: sans-serif;
+        color: white;
+      }
+      .grid-container {
+        display: grid;
+        grid-template-columns: 1fr;
+        .item1 {
+          a {
+            display: block;
+            text-align: center;
+            padding: 10px;
+            text-decoration: none;
+            color: white;
+            font-size: 20px;
+          }
+        }
+        .item4 {
+          text-align: -webkit-center;
+        }
+        .item4 input[type=text], input[name=pword], textarea {
+          display: block;
+
+        }
+        .item3 {
+          display: block;
+          text-align: -webkit-center;
+          #userBlog {
+            input {
+              display: block;
+              text-align: -webkit-auto;
+              
+            }
+            p {
+              text-align: left;
+            }
+            
+            
+          }
+        }
+        #user_form {
+          display: table-caption;
+          text-align: -webkit-center;
+        }
+
+    }
+  }

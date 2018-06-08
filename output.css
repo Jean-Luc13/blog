@@ -1,68 +1,100 @@
-.item1 {
-  width: 100%;
-  text-align: right; }
+@media (min-width: 700px) {
+  .item1 {
+    width: 100%;
+    text-align: right; }
 
-.item1 a {
-  padding: 10px;
-  text-decoration: none;
-  color: white;
-  font-size: 20px; }
+  .item1 a {
+    padding: 10px;
+    text-decoration: none;
+    color: white;
+    font-size: 20px; }
 
-.item1 h2 {
-  text-align: left; }
+  .item1 h2 {
+    text-align: left; }
 
-#user_form {
-  color: white;
-  background-color: none;
-  width: 100%; }
+  #user_form {
+    color: white;
+    background-color: none;
+    width: 100%; }
 
-#user_form input[type=text], input[type=password], select, textarea {
-  width: auto;
-  padding: 6px;
-  border: 1px solid #ccc;
-  border-radius: 2px;
-  box-sizing: border-box;
-  resize: vertical;
-  display: inline-block;
-  float: right; }
+  #user_form input[type=text], input[type=password], select, textarea {
+    width: auto;
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    box-sizing: border-box;
+    resize: vertical;
+    display: inline-block;
+    float: right; }
 
-body {
-  background-image: url("Joker1.jpg");
-  font-family: sans-serif;
-  color: white; }
+  body {
+    background-image: url("Joker1.jpg");
+    font-family: sans-serif;
+    color: white; }
 
-.tx {
-  width: 100%;
-  min-height: 150px;
-  max-height: auto; }
+  .tx {
+    width: 100%;
+    min-height: 150px;
+    max-height: auto; }
 
-.blog_data {
-  text-align: center; }
+  .blog_data {
+    text-align: center; }
 
-.item1 {
-  grid-area: header;
-  width: 100%; }
+  .item1 {
+    grid-area: header;
+    width: 100%; }
 
-.item2 {
-  grid-area: left; }
+  .item2 {
+    grid-area: left; }
 
-.item3 {
-  grid-area: main;
-  max-width: 933px; }
+  .item3 {
+    grid-area: main;
+    max-width: 933px; }
 
-.item4 input[type=text], input[name=pword], textarea {
-  grid-area: right;
-  float: left;
-  display: inline-block;
-  width: 100%; }
+  .item4 input[type=text], input[name=pword], textarea {
+    grid-area: right;
+    float: left;
+    display: inline-block;
+    width: 100%; }
 
-.item5 {
-  grid-area: footer; }
+  .item5 {
+    grid-area: footer; }
 
-.grid-container {
-  display: grid;
-  grid-template-rows: 100px 1fr 100px;
-  grid-template-columns: 200px 1fr 200px;
-  grid-template-areas: 'header header header' 'left main right' 'footer footer footer'; }
+  .grid-container {
+    display: grid;
+    grid-template-rows: 100px 1fr 100px;
+    grid-template-columns: 200px 1fr 200px;
+    grid-template-areas: 'header header header' 'left main right' 'footer footer footer'; } }
+@media (max-width: 700px) {
+  body {
+    background-image: url("Joker1.jpg");
+    font-family: sans-serif;
+    color: white; }
+
+  .grid-container {
+    display: grid;
+    grid-template-columns: 1fr; }
+    .grid-container .item1 a {
+      display: block;
+      text-align: center;
+      padding: 10px;
+      text-decoration: none;
+      color: white;
+      font-size: 20px; }
+    .grid-container .item4 {
+      text-align: -webkit-center; }
+    .grid-container .item4 input[type=text], .grid-container input[name=pword], .grid-container textarea {
+      display: block; }
+    .grid-container .item3 {
+      display: block;
+      text-align: -webkit-center; }
+      .grid-container .item3 #userBlog input {
+        display: block;
+        text-align: -webkit-auto; }
+      .grid-container .item3 #userBlog p {
+        text-align: left; }
+    .grid-container #user_form {
+      display: table-caption;
+      text-align: -webkit-center; } }
 
 /*# sourceMappingURL=output.css.map */
